@@ -1,0 +1,102 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import conexao.ConexaoMySQL;
+import model.Produto;
+
+public class ProdutoDAO {
+
+	//create
+	public void create(Produto produto) {
+	Connection conexao = ConexaoMySQL.iniciarConexao(); //abre conexao com BD
+	PreparedStatement stmt = null; //cria um prepared statement que vai receber o SQL
+	
+		try {
+			stmt = conexao.prepareStatement("INSERT INTO produto (nome, preco, quantidade_estoque) VALUES (?, ?, ?)");
+			stmt.setString(1, produto.getNome());
+			stmt.setDouble(2, produto.getPreco());
+			stmt.setInt(3, produto.getQuantidadeEstoque());
+			
+			stmt.executeUpdate(); //EXECUTA O SQL
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConexaoMySQL.encerrarConexao(conexao, stmt);
+		}
+		
+	}
+	//read
+	public ArrayList<Produto> read() {
+	Connection conexao = ConexaoMySQL.iniciarConexao(); //abre conexao com BD
+	PreparedStatement stmt = null; //cria um prepared statement que vai receber o SQL
+	ResultSet rs = null; //cria um result set - similar arraylist, soh funciona no BD
+	ArrayList<Produto> listaprodutos = new ArrayList<>();
+	
+		try {
+			stmt = conexao.prepareStatement("SELECT * FROM produto");
+			rs = stmt.executeQuery(); //EXECUTA O SELECT E PREENCHE O RESULT SET COM DADOS DA BUSCA
+			
+			//percorrer todo o result set, responsavel por armazenar busca no banco
+			//a cada registro do result set sera realizado uma replicacao para o arraylist
+			while (rs.next()) {
+				//cria objeto produto utilizado para ser adc ao arraylist
+				//usaremos o mesmo objeto em cada ciclo
+				//cada ciclo fara com que os atributos sejam sobrepostos
+				//no entanto, antes de perder a informacao, realizamos o registro na arraylist
+				Produto produto = new Produto(); 
+				produto.setIdProduto(rs.getInt("id_produto"));
+				produto.setNome(rs.getString("nome"));
+				produto.setPreco(rs.getDouble("preco"));
+				produto.setQuantidadeEstoque(rs.getInt("quantidade_estoque"));
+				listaprodutos.add(produto);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConexaoMySQL.encerrarConexao(conexao, stmt, rs);
+		}
+		return listaprodutos;
+	}
+	//update
+	public void update(Produto produto) {
+	Connection conexao = ConexaoMySQL.iniciarConexao(); //abre conexao com BD
+	PreparedStatement stmt = null; //cria um prepared statement que vai receber o SQL
+	
+		try {
+			stmt = conexao.prepareStatement("UPDATE produto SET nome = ?, preco = ?, quantidade_estoque = ? WHERE id_produto = ? ");
+			stmt.setString(1, produto.getNome());
+			stmt.setDouble(2, produto.getPreco());
+			stmt.setInt(3, produto.getQuantidadeEstoque());
+			stmt.setInt(4, produto.getIdProduto());
+			
+			stmt.executeUpdate(); //EXECUTA O SQL
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConexaoMySQL.encerrarConexao(conexao, stmt);
+		}
+		
+	}
+	//delete
+	public void delete(Produto produto) {
+		Connection conexao = ConexaoMySQL.iniciarConexao();
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conexao.prepareStatement("DELETE FROM produto WHERE id_produto = ? ");
+			stmt.setInt(1, produto.getIdProduto());
+			
+			stmt.executeUpdate();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConexaoMySQL.encerrarConexao(conexao, stmt);
+		}
+	}
+}
