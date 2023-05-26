@@ -1,0 +1,64 @@
+package model;
+
+public class Produto {
+	//atributos
+	private int idProduto;
+	private String nome;
+	private double preco;
+	private int quantidadeEstoque;
+	
+	//construtores
+	public Produto() {
+		super();
+	}
+	public Produto(String nome, double preco, int quantidadeEstoque) {
+		super();
+		this.nome = nome;
+		this.preco = preco;
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+	
+	public Produto(int idProduto, String nome, double preco, int quantidadeEstoque) {
+		super();
+		this.idProduto = idProduto;
+		this.nome = nome;
+		this.preco = preco;
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+	
+	//getters e setters
+	public int getIdProduto() {
+		return idProduto;
+	}
+	public void setIdProduto(int idProduto) {
+		this.idProduto = idProduto;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public double getPreco() {
+		return preco;
+	}
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+	public int getQuantidadeEstoque() {
+		return quantidadeEstoque;
+	}
+	public void setQuantidadeEstoque(int quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+	public void verificarEstoque() {
+	
+		
+	}
+	public String getId_produto() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}
