@@ -1,0 +1,29 @@
+package sa2;
+
+import java.util.Scanner;
+
+public class Sa2Exercicio4 {
+		//EXERCICIO 4 SA2
+	public static void main(String[] args) {
+		Scanner ler = new Scanner(System.in);
+
+		double porcentagemComum, porcentagemFuncionario, porcentagemVip, custoProduto,
+		custoFinal, pessoa;
+		
+		System.out.println("Cliente comum (1), Funcionario (2), VIP (3): ");
+		pessoa = ler.nextDouble();
+		System.out.println("Digite o valor do produto: ");
+		custoProduto = ler.nextDouble();
+		porcentagemComum = custoProduto;
+		porcentagemFuncionario = custoProduto - (custoProduto * 0.10);
+		porcentagemVip =  custoProduto - (custoProduto * 0.05);
+		
+		if (pessoa == 1) {
+			System.out.println("O valor do produto sera de: " + porcentagemComum);
+		} else if (pessoa == 2) {
+			System.out.println("O valor do produto sera de: " + porcentagemFuncionario);
+		} else if (pessoa == 3) {
+			System.out.println("O valor do produto sera de: " + porcentagemVip);
+		}
+	}
+}
