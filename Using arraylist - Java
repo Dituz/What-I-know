@@ -1,0 +1,21 @@
+package sa2;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Sa2Exercicio5 {
+
+	public static void main(String[] args) {
+		ArrayList<Integer> notas = new ArrayList<>();
+		
+		notas.add(10);
+		notas.add(8);
+		notas.add(1, 7);
+		notas.add(23);
+		notas.add(3);
+		Collections.sort(notas);
+		System.out.println(notas);
+		Collections.reverse(notas);
+		System.out.println(notas);
+	}
+}
