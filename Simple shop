@@ -1,0 +1,22 @@
+print('Bem Vindo a Loja de Victor do Nascimento da Cruz') #abertura da loja
+valor = float(input('Digite o valor do produto: ')) #usuario digita valor do produto
+quantidade = float(input('Digite a quantidade de produtos: ')) #usuario digita quantido do produto
+preco = valor * quantidade #valor total considerando quantidade e valor do produto
+descontoCinco = preco - (preco * 5 / 100) #desconto de 5 porcento
+descontoDez = preco - (preco * 10 / 100) #desconto de 10 porcento
+descontoQuinze = float(preco - (preco * 15 / 100)) #desconto de 15 porcento
+
+if quantidade < 9 or quantidade == 9:
+    print('O valor do total é: ' , preco) #caso a quantidade seja igual ou menor que 9 o usuario pagara o valor total
+    
+elif quantidade == 10 or quantidade <= 99:
+    print('O valor seria R${:.2f}, com o desconto fica R${:.2f} (desconto aplicado de 5%)' .format (preco, descontoCinco)) 
+    #caso a quantidade seja igual a 10 ou menor/igual a 99 o usuario ganha 5 porcento de desconto
+
+elif quantidade == 100 or quantidade <= 999:
+    print('O valor seria R${:.2f}, com o desconto fica R${:.2f} (desconto aplicado de 10%)' .format(preco, descontoDez)) 
+    #caso a quantidade seja igual a 100 ou menor/igual a 999 o usuario ganha 10 porcento de desconto
+
+else:
+    print('O valor seria R${:.2f}, com o desconto fica R${:.2f} (desconto aplicado de 15%)' .format(preco, descontoQuinze)) 
+    #caso a quantidade seja maior ou igual a 1000 o usuario ganha 15 porcento de desconto
