@@ -1,0 +1,61 @@
+print('Bem vindo a lanchonete de Victor do Nascimento da Cruz')
+print('-----------------Cardapio-----------------')
+print('| Codigo |       Descricao       | Valor |')
+print('|  100   |     Cachorro Quente   |  9,00 |')
+print('|  101   | Cachorro Quente Duplo | 11,00 |')
+print('|  102   |         X-Egg         | 12,00 |')
+print('|  103   |        X-Salada       | 12,00 |')
+print('|  104   |        X-Bacon        | 14,00 |')
+print('|  105   |         X-Tudo        | 17,00 |')
+print('|  200   |    Refigerante Lata   |  5,00 |')
+print('|  201   |       Cha Gelado      |  4,00 |')
+
+total = 0
+
+while True:
+        codigo = input('Entre com o codigo desejado: ')
+        codigo = int(codigo)
+        if codigo == 100:
+                valor = 9.00
+                print('Voce pediu um Cachorro-Quente no valor de {:.2f}'.format(valor))
+        else:
+            if codigo == 101:
+                   valor = 11.00
+                   print('Voce pediu um Cachorro-Quente Duplo no valor de {:.2f}'.format(valor))
+            else:
+                if codigo == 102:
+                      valor = 12.00
+                      print('Voce pediu um X-Egg no valor de {:.2f}'.format(valor))
+                else:
+                    if codigo == 103:
+                          valor = 12.00
+                          print('Voce pediu um X-Salada no valor de {:.2f}'.format(valor))
+                    else:
+                        if codigo == 104:
+                              valor = 14.00
+                              print('Voce pediu um X-Bacon no valor de {:.2f}'.format(valor))
+                        else:
+                            if codigo == 105:
+                                  valor = 17.00
+                                  print('Voce pediu um X-Tudo no valor de {:.2f}'.format(valor))
+                            else:
+                                if codigo == 200:
+                                      valor = 5.00
+                                      print('Voce pediu um Refrigerante Lata no valor de {:.2f}'.format(valor))
+                                else:
+                                    if  codigo == 201:
+                                      valor = 4.00
+                                      print('Voce pediu um Cha Gelado no valor de {:.2f}'.format(valor))
+                                    else:
+                                        codigo != 100 or 101 or 102 or 103 or 104 or 105 or 200 or 201
+                                        print('Opcao invalida')
+                                        continue                                                                     
+        total += valor
+        opcao = int(input('Deseja pedir mais algumas coisa?\n1 - Sim\n2 - Nao\n'))
+        if opcao == 1:
+            codigo = int(input('Entre com o codigo desejado: '))
+            continue
+        else:
+            opcao == 2
+            print('Total a ser pago: {:.2f}'.format(total))
+            break
