@@ -1,0 +1,27 @@
+package sa2;
+
+import java.util.Scanner;
+
+public class Sa2Exercicio1 {
+
+	public static void main(String[] args) {
+		
+		    int A;
+		    do {
+		        Scanner ler = new Scanner(System.in);
+		        System.out.println("Informe um numero(digite 0 ou "
+		        		+ "numero maior que 10 para finalizar): ");
+
+		        A = ler.nextInt();
+		        if (A != 0 & A <11){
+		            int mult = 0;
+		            while (mult < 10) {
+		                mult++;
+		                System.out.println(A + " * " + mult + " = " + (A * mult));
+		            }
+		        }
+		    } while (A != 0 & A <11);
+
+		} 
+
+	}
