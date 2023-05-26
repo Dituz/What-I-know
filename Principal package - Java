@@ -1,0 +1,34 @@
+package Principal;
+
+	import java.util.ArrayList;
+
+	import dao.ProdutoDAO;
+	import model.Produto;
+
+	public class Principal {
+
+		public static void main(String[] args) {
+			Produto p1 = new Produto();
+			ProdutoDAO produtodao = new ProdutoDAO();
+			ArrayList<Produto> listaprodutos = new ArrayList<>();
+
+			p1.setIdProduto(1);
+			p1.setNome("Carne");
+			p1.setPreco(10);
+			p1.setQuantidadeEstoque(5);
+
+			 produtodao.create(p1);
+			// produtodao.update(p1);
+			// produtodao.delete(p1);
+
+			listaprodutos = produtodao.read();
+			
+			for (int cont = 0; cont < listaprodutos.size(); cont ++) {
+				System.out.println("ID: " + listaprodutos.get(cont).getId_produto() + 
+								   " | Nome: " + listaprodutos.get(cont).getNome() +
+								   " | Preço: " + listaprodutos.get(cont).getPreco() +
+								   " | Quantidade Estoque: " + listaprodutos.get(cont).getQuantidadeEstoque());
+			}
+		}
+
+	}
